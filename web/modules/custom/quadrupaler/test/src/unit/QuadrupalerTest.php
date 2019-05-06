@@ -11,22 +11,31 @@ use PHPUnit\Framework\TestCase;
 
 class QuadrupalerTest extends TestCase
 {
+  /** @var \PHPUnit\Framework\MockObject\MockObject $accountProxy */
+  private $accountProxy;
+  public function setUp() {
+    $this->accountProxy = Mockery::mock(\Drupal\Core\Session\AccountProxy::class);
+  }
+
   public function testQuadrupal_GivenOneDrupal_ReturnFourDrupals(){
-    $quad = new Quadrupaler();
+    $quad = new Quadrupaler($this->accountProxy);
     $this->assertEquals('drupaldrupaldrupaldrupal', $quad->quadrupal('drupal'));
   }
 
   public function testQuadrupal_GivenDRUPAL_ReturnDRUPAL(){
-    $quad = new Quadrupaler();
+    $quad = new Quadrupaler($this->accountProxy);
     $this->assertEquals('DRUPAL', $quad->quadrupal('DRUPAL'));
   }
 
   public function testQuadrupal_GivenDrupalWithText_ReturnFourDrupalWithText(){
-    $quad = new Quadrupaler();
+    $quad = new Quadrupaler($this->accountProxy);
     $this->assertEquals('adrupaldrupaldrupaldrupala', $quad->quadrupal('adrupala'));
   }
   public function testQuadrupal_GivenAuthenticatedUser_FirstCHapUppercase(){
-    $quad = new Quadrupaler();
+    $this->accountProxy
+      ->method('isAnonymous')
+      ->willReturn(FALSE);
+    $quad = new Quadrupaler($this->accountProxy);
     $this->assertEquals('Drupaldrupaldrupaldrupal', $quad->quadrupal('drupal'));
   }
 }
