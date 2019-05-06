@@ -6,9 +6,10 @@
  * Time: 05:42
  */
 
-require_once 'Quadrupaler.php';
+use Drupal\quadrupaler\Quadrupaler;
+use PHPUnit\Framework\TestCase;
 
-class QuadrupalerTest extends PHPUnit\Framework\TestCase
+class QuadrupalerTest extends TestCase
 {
   public function testQuadrupal_GivenOneDrupal_ReturnFourDrupals(){
     $quad = new Quadrupaler();

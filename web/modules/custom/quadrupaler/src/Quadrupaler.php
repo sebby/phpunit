@@ -1,10 +1,7 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: sebastiencunin
- * Date: 06/05/2019
- * Time: 05:34
- */
+
+namespace  Drupal\quadrupaler;
+
 
 class Quadrupaler
 {
