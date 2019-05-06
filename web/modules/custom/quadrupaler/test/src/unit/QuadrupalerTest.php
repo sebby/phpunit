@@ -25,4 +25,8 @@ class QuadrupalerTest extends TestCase
     $quad = new Quadrupaler();
     $this->assertEquals('adrupaldrupaldrupaldrupala', $quad->quadrupal('adrupala'));
   }
+  public function testQuadrupal_GivenAuthenticatedUser_FirstCHapUppercase(){
+    $quad = new Quadrupaler();
+    $this->assertEquals('Drupaldrupaldrupaldrupal', $quad->quadrupal('drupal'));
+  }
 }

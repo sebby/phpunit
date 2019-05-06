@@ -3,9 +3,17 @@
 namespace  Drupal\quadrupaler;
 
 
+use Drupal\Core\Session\AccountProxy;
+
 class Quadrupaler
 {
   public function quadrupal(string $string):string {
-    return str_replace('drupal','drupaldrupaldrupaldrupal', $string);
+    $ap  = new AccountProxy();
+    $replacement = str_replace('drupal','drupaldrupaldrupaldrupal', $string);
+    if (!$ap->isAnonymous()) {
+      $replacement = ucfirst($replacement);
+    }
+
+    return $replacement;
   }
 }
