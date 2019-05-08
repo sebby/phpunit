@@ -12,7 +12,7 @@ class Quadrupaler
     $this->accountProxy = $accountProxy;
   }
 
-  public function quadrupal(string $string):string {
+  public function quadrupal(string $string) {
     $ap  = new AccountProxy();
     $replacement = str_replace('drupal','drupaldrupaldrupaldrupal', $string);
     if (!$ap->isAnonymous()) {

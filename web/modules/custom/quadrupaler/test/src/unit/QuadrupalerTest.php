@@ -14,7 +14,8 @@ class QuadrupalerTest extends TestCase
   /** @var \PHPUnit\Framework\MockObject\MockObject $accountProxy */
   private $accountProxy;
   public function setUp() {
-    $this->accountProxy = Mockery::mock(\Drupal\Core\Session\AccountProxy::class);
+    //$this->accountProxy = Mockery::mock(\Drupal\Core\Session\AccountProxy::class);
+    $this->accountProxy = $this->getMockBuilder(\Drupal\Core\Session\AccountProxy::class)->getMock();
   }
 
   public function testQuadrupal_GivenOneDrupal_ReturnFourDrupals(){
